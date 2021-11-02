@@ -17,7 +17,7 @@ function getLocalStorage() {
 getLocalStorage()
 
 function layThongTinNV() {
-  var taikhoan = getELE("tknv").value;
+  var taikhoan = getELE("tknv").value.trim().toLowerCase();
   var hovaten = getELE("name").value;
   var email = getELE("email").value;
   var matkhau = getELE("password").value;
@@ -30,7 +30,7 @@ function layThongTinNV() {
   var isValid = true;
 
   //Kiểm tra tài khoản
-  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan.toLowerCase(), "Tài khoản không được trùng", "tbTKNV", dsnv.mangNV);
+  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan, "Tài khoản không được trùng", "tbTKNV", dsnv.mangNV);
 
   //Kiểm tra tên nhân viên
   isValid &= validation.checkEmpty(hovaten, "Họ tên không được để trống", "tbTen") && validation.checkName(hovaten, "Tên phải là kiểu chữ", "tbTen");
@@ -54,7 +54,7 @@ function layThongTinNV() {
   isValid &= validation.checkEmpty(giolam, "Giờ làm không được để trống", "tbGiolam") && validation.checkTime(giolam, "Giờ làm không đúng định dạng", "tbGiolam");
 
   if (isValid) {
-    var nv = new NhanVien(taikhoan.trim(), hovaten, email, matkhau, ngaylam, Number(luong), chucvu, giolam);
+    var nv = new NhanVien(taikhoan, hovaten, email, matkhau, ngaylam, Number(luong), chucvu, giolam);
     nv.TongLuong = nv.tinhTongLuong();
     nv.LoaiNV = nv.xepLoai();
     //Them NV
@@ -138,7 +138,7 @@ function xemChiTiet(taikhoan) {
 function capNhatNV() {
   //Clear span thông báo
   resetSpan();
-  var taikhoan = getELE("tknv").value;
+  var taikhoan = getELE("tknv").value.trim().toLowerCase();
   var hovaten = getELE("name").value;
   var email = getELE("email").value;
   var matkhau = getELE("password").value;
@@ -150,7 +150,7 @@ function capNhatNV() {
   var isValid = true;
   //Kiểm tra tài khoản
   //Nếu tài khoản không tồn tại thì không cập nhật
-  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan.toLowerCase(), "", "tbTKNV", dsnv.mangNV);
+  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan, "", "tbTKNV", dsnv.mangNV);
 
   if (!isValid) {
     var isValid = true;
@@ -176,7 +176,7 @@ function capNhatNV() {
     //Kiểm tra định dạng giờ làm
     isValid &= validation.checkEmpty(giolam, "Giờ làm không được để trống", "tbGiolam") && validation.checkTime(giolam, "Giờ làm không đúng định dạng", "tbGiolam");
     if (isValid) {
-      var nv = new NhanVien(taikhoan.trim(), hovaten, email, matkhau, ngaylam, Number(luong), chucvu, giolam);
+      var nv = new NhanVien(taikhoan, hovaten, email, matkhau, ngaylam, Number(luong), chucvu, giolam);
       nv.TongLuong = nv.tinhTongLuong();
       nv.LoaiNV = nv.xepLoai();
       dsnv.capNhat(nv);
@@ -193,7 +193,7 @@ function capNhatNV() {
 }
 
 //Search nhân viên theo xếp loại
-getELE("searchName").onkeyup = function(){
+getELE("searchName").onkeyup = function () {
   var tuKhoa = getELE("searchName").value;
   hienThiTable(dsnv.searchXL(tuKhoa));
 }
