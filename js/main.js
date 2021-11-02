@@ -30,7 +30,7 @@ function layThongTinNV() {
   var isValid = true;
 
   //Kiểm tra tài khoản
-  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan, "Tài khoản không được trùng", "tbTKNV", dsnv.mangNV);
+  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan.toLowerCase(), "Tài khoản không được trùng", "tbTKNV", dsnv.mangNV);
 
   //Kiểm tra tên nhân viên
   isValid &= validation.checkEmpty(hovaten, "Họ tên không được để trống", "tbTen") && validation.checkName(hovaten, "Tên phải là kiểu chữ", "tbTen");
