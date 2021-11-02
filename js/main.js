@@ -150,7 +150,7 @@ function capNhatNV() {
   var isValid = true;
   //Kiểm tra tài khoản
   //Nếu tài khoản không tồn tại thì không cập nhật
-  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan, "", "tbTKNV", dsnv.mangNV);
+  isValid &= validation.checkEmpty(taikhoan, "Tài khoản không được để trống", "tbTKNV") && validation.checkID(taikhoan.toLowerCase(), "", "tbTKNV", dsnv.mangNV);
 
   if (!isValid) {
     var isValid = true;

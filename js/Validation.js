@@ -108,7 +108,7 @@ function Validation() {
   this.checkID = function (value, message, spanID, mangNV) {
     var isExist = false;
     isExist = mangNV.some(function (nv) {
-      return value == nv.TaiKhoan;
+      return value == nv.TaiKhoan.toLowerCase();
     });
     if (isExist) {
       //Không hợp lệ
