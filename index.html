@@ -114,7 +114,7 @@
 							</div>
 							<div class="col-md-6 text-right">
 								<button class="btn btn-primary" id="btnThem" data-toggle="modal"
-									data-target="#myModal">Thêm nhân viên</button>
+									data-target="#myModal" onclick="resetForm()">Thêm nhân viên</button>
 							</div>
 						</div>
 					</div>
@@ -187,7 +187,7 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 
-					<form role="form">
+					<form role="form" id = "formQLNV">
 
 						<div class="form-group">
 							<div class="input-group">
@@ -288,8 +288,8 @@
 
 				<!-- Modal footer -->
 				<div class="modal-footer" id="modal-footer">
-					<button id="btnThemNV" type="button" class="btn btn-success">Thêm người dùng</button>
-					<button id="btnCapNhat" type="button" class="btn btn-success">Cập nhật</button>
+					<button id="btnThemNV" type="button" class="btn btn-success" onclick="layThongTinNV()">Thêm người dùng</button>
+					<button id="btnCapNhat" type="button" class="btn btn-success" onclick="capNhatNV()">Cập nhật</button>
 					<button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
 				</div>
 
@@ -324,6 +324,16 @@
 			});
 		});
 	</script>
+	<script src="./js/NhanVien.js"></script>
+	<script src="./js/DanhSachNhanVien.js"></script>
+	<script src="./js/Validation.js"></script>
+	<script src="./js/main.js"></script>
+	<!-- <script>
+		var x = document.querySelectorAll(".sp-thongbao");
+		for (var i = 0; i < x.length; i++){
+			x[i].style.backgroundColor = "blue";
+		}
+	</script> -->
 </body>
 
 </html>
